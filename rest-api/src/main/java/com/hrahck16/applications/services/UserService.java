@@ -3,6 +3,8 @@ package com.hrahck16.applications.services;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hrahck16.applications.domain.User;
 import com.hrahck16.applications.tos.AuthorizationTO;
+import com.hrahck16.applications.tos.DashboardTO;
+import com.hrahck16.applications.tos.FeedbackTO;
 import com.hrahck16.applications.tos.FeelingTO;
 import org.springframework.stereotype.Component;
 
@@ -23,6 +25,7 @@ public class UserService {
 
     private HashMap <String, User> users = new HashMap<String, User>();
     private HashMap <String, FeelingTO> userFeelings = new HashMap<String, FeelingTO>();
+    private HashMap <String, List<FeedbackTO>> devisionFeedbacks = new HashMap<String, List<FeedbackTO>>();
 
     @PostConstruct
     public void init() {
@@ -81,5 +84,23 @@ public class UserService {
         }
         this.userSessions.put(authorizationTO.getToken(),authorizationTO);
         return authorizationTO;
+    }
+
+    /**
+     * Based on cookies identify current user and return Dashboard with statistics
+     * representation to the teamlead
+     * @param cookies
+     * @return
+     */
+    public DashboardTO getDashboard(Cookie[] cookies) {
+        DashboardTO result = new DashboardTO();
+        AuthorizationTO currentUser = this.getAuthorization(cookies);
+        int fedbacks = 0;
+        List<FeedbackTO> feed = this.devisionFeedbacks.get(currentUser.getUser().getDivision());
+        if (feed != null) {
+            fedbacks = feed.size();
+        }
+        result.setTotalFeedbacks(fedbacks);
+        return result;
     }
 }

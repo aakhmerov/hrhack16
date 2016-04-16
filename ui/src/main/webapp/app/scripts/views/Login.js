@@ -51,7 +51,11 @@ define([
         },
 
         navigateHome: function() {
-            window.router.navigate(this.feedbackPage, {trigger: true, replace: true});
+            if (AuthenticationModel.get('user') && AuthenticationModel.get('user').role == 'Teamlead') {
+                window.router.navigate("dashboard", {trigger: true, replace: true});
+            } else {
+                window.router.navigate(this.feedbackPage, {trigger: true, replace: true});
+            }
         },
 
         render: function () {

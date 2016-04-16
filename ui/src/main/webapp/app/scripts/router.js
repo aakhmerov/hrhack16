@@ -24,6 +24,7 @@ define([
             'home': 'showHome',
             'login':'login',
             'feeling':'feeling',
+            'dashboard' : 'showDashboard',
             'feedback/give' : 'giveFeedback',
             'feedback/categories/:id' : 'categories',
             'feedback/preview' : 'preview',
@@ -34,7 +35,7 @@ define([
 
         initialize: function () {
             _.bindAll(this, 'showHome','login','feeling', 'defaultAction', 'showPage',
-                'removeCurrentView', 'setView','giveFeedback', 'categories', 'preview');
+                'removeCurrentView', 'setView','giveFeedback', 'categories', 'preview','showDashboard');
         },
 
         showPage: function (MainView, HeaderView, FooterView) {
@@ -72,7 +73,11 @@ define([
             this.showParams = {
                 el: '#page'
             };
-            require(['views/feedback/FeedbackView'], this.showPage);
+            if (AuthenticationModel.get('user') && AuthenticationModel.get('user').role == 'Teamlead') {
+                window.router.navigate("dashboard", {trigger: true, replace: true});
+            } else {
+                require(['views/feedback/FeedbackView'], this.showPage);
+            }
         },
 
         login: function (event, attributes) {
@@ -111,6 +116,13 @@ define([
                 el: '#page'
             };
             require(['views/feedback/Preview'], this.showPage);
+        },
+
+        showDashboard : function (){
+            this.showParams = {
+                el: '#page'
+            };
+            require(['views/management/Dashboard'], this.showPage);
         },
 
         defaultAction: function () {
