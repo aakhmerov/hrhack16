@@ -15,8 +15,9 @@ define([
 
         template: Handlebars.compile(categories),
 
-        initialize: function () {
+        initialize: function (options) {
 //            nothing to do here
+            this.options = options;
             _.bindAll(this,'render');
             this.collection = new CategoriesCollection();
             $.when(this.collection.fetch()).then(this.render);

@@ -25,7 +25,7 @@ define([
             'login':'login',
             'feeling':'feeling',
             'feedback/give' : 'giveFeedback',
-            'feedback/categories' : 'categories',
+            'feedback/categories/:id' : 'categories',
             // Default actions handling
             '*actions': 'defaultAction'
         },
@@ -95,9 +95,12 @@ define([
             require(['views/feedback/GiveFeedbackView'], this.showPage);
         },
 
-        categories : function (event, attributes) {
+        categories : function (id) {
             this.showParams = {
-                el: '#page'
+                el: '#page',
+                mainContentOptions: {
+                    categoryId: id
+                }
             };
             require(['views/feedback/CategoriesView'], this.showPage);
         },
