@@ -18,7 +18,8 @@ define([
         template: Handlebars.compile(categories),
         events : {
             'click .answerButton' : 'processQuestion',
-            'click .preview' : 'processPreview'
+            'click .preview' : 'processPreview',
+            'click input[type=radio]' : 'removeFeedbackTypeError'
         },
 
         initialize: function (options) {
@@ -32,19 +33,35 @@ define([
 
         processQuestion : function (event) {
             event.preventDefault();
-            var model = new AnswerModel();
-            var answer = $(event.currentTarget).attr('answer');
-            var questionId = $(event.currentTarget).attr('question');
-            model.set('answer',answer);
-            model.set('questionId',questionId);
-            model.set('category',this.options.categoryId);
-            this.answersCollection.add(model);
-            this.$el.find('div[row-id="' + questionId + '"]').hide();
+
+            var categoryType = $('input[name=type]:checked', '.feedback-type').val();
+            if(categoryType != undefined) {
+                var model = new AnswerModel();
+                var answer = $(event.currentTarget).attr('answer');
+                var questionId = $(event.currentTarget).attr('question');
+                model.set('answer',answer);
+                model.set('questionId',questionId);
+                model.set('category',this.options.categoryId);
+                this.answersCollection.add(model);
+                this.$el.find('div[row-id="' + questionId + '"]').hide();
+            } else {
+                $('div.error-box').css('display','block');
+                $('div.feedback-type').css('border','1px solid red');
+            }
+
         },
 
         processPreview : function (event) {
             event.preventDefault();
             console.log(this.answersCollection.toJSON());
+        },
+
+        removeFeedbackTypeError: function () {
+            if($('div.error-box').css('display') == 'block') {
+                $('div.error-box').css('display','none');
+                $('div.feedback-type').css('border','none');
+            }
+            return;
         },
 
         render: function () {
