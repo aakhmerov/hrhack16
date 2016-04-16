@@ -12,8 +12,10 @@ define([
     'underscore',
     'backbone',
     'handlebars',
+    'models/security/AuthenticationModel',
+    'views/Login',
     'views/layout/PageLayoutView'
-], function ($, _, Backbone,Handlebars,PageLayoutView) {
+], function ($, _, Backbone,Handlebars,AuthenticationModel,Login,PageLayoutView) {
 
     var AppRouter = Backbone.Router.extend({
         routes: {
@@ -35,6 +37,12 @@ define([
 
         showPage: function (MainView, HeaderView, FooterView) {
             this.removeCurrentView();
+            if (AuthenticationModel.isAuthenticated()) {
+                this.showParams.mainContent = MainView;
+            } else {
+                this.showParams.mainContent = this.showParams.authNotRequired ?  MainView: Login;
+                this.showParams.headerContent = null;
+            }
             var pageContainer = $('<div></div>').attr({id: 'page'});
             $('body').append(pageContainer);
             this.showParams.mainContent = MainView;
