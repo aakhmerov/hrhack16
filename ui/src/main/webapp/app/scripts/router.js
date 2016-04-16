@@ -21,13 +21,14 @@ define([
             '': 'showHome',
             'home': 'showHome',
             'login':'login',
+            'feeling':'feeling',
             // Default actions handling
             '*actions': 'defaultAction'
         },
 
 
         initialize: function () {
-            _.bindAll(this, 'showHome','login', 'defaultAction', 'showPage',
+            _.bindAll(this, 'showHome','login','feeling', 'defaultAction', 'showPage',
                 'removeCurrentView', 'setView');
         },
 
@@ -66,6 +67,13 @@ define([
                 el:'#page'
             };
             require(['views/Login'], this.showPage);
+        },
+
+        feeling: function () {
+            this.showParams = {
+                el:'#page'
+            };
+            require(['views/feedback/Feeling'], this.showPage);
         },
 
         defaultAction: function () {
