@@ -6,17 +6,19 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'text!templates/layout/emptyContentTemplate.html',
+    'text!templates/feedback/feedback.html',
+    'models/feedbck/FeedbackModel',
     //dirty hack for handlebars loading wait
     'handlebars'
-], function($, _, Backbone, emptyContentTemplate,Handlebars) {
+], function($, _, Backbone, feedback,FeedbackModel,Handlebars) {
 
     var FeedbackView = Backbone.View.extend({
 
-        template : Handlebars.compile(emptyContentTemplate),
+        template : Handlebars.compile(feedback),
 
         initialize : function() {
 //            nothing to do here
+            this.model = new FeedbackModel();
         },
 
         render: function() {

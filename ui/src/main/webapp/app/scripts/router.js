@@ -34,7 +34,7 @@ define([
             this.removeCurrentView();
             var pageContainer = $('<div></div>').attr({id: 'page'});
             $('body').append(pageContainer);
-
+            this.showParams.mainContent = MainView;
             var page = new PageLayoutView(this.showParams);
             page.render();
             this.setView(page);

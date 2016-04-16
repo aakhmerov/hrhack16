@@ -14,36 +14,36 @@ define([
     'views/layout/EmptyHeader',
     'views/layout/EmptyContent',
     'views/layout/EmptyFooter',
-    'text!templates/layout/simpleTemplate.html',
+    'text!templates/layout/simpleTemplate.html' ,
     //dirty hack for handlebars loading wait
     'handlebars'
-], function ($, _, Backbone, EmptyHeader, EmptyContent, EmptyFooter, simpleTemplate, Handlebars) {
+], function($, _, Backbone, EmptyHeader, EmptyContent, EmptyFooter, simpleTemplate,Handlebars) {
 
     var PageLayoutView = Backbone.View.extend({
 
-        template: Handlebars.compile(simpleTemplate),
+        template : Handlebars.compile(simpleTemplate),
         //defaults to NavigationHeader view function
-        headerContent: EmptyHeader,
+        headerContent : EmptyHeader,
         //defaults to EmptyContent view function
-        mainContent: EmptyContent,
+        mainContent :  EmptyContent,
         //defaults to EmptyFooter view function
-        footerContent: EmptyFooter,
+        footerContent : EmptyFooter,
         //defaults of header options
-        headerOptions: {
-            el: '#header'
+        headerOptions : {
+            el : '#header'
         },
-        mainContentOptions: {
-            el: '#mian'
-        },
-
-        footerContentOptions: {
-            el: "#footer"
+        mainContentOptions : {
+            el : '#mian'
         },
 
-        useMainRender: false,
+        footerContentOptions : {
+            el : "#footer"
+        },
+
+        useMainRender:false,
 
 
-        initialize: function (options) {
+        initialize : function(options) {
             this.options = $.extend({}, this.options, options);
             //instantiate appropriate views based on component functions
             if (options.mainContent != undefined && options.mainContent != null) {
@@ -67,7 +67,7 @@ define([
             }
         },
 
-        remove: function (attributes) {
+        remove : function (attributes) {
             if (!_.isEmpty(this.headerView)) {
                 this.headerView.remove();
             }
@@ -80,7 +80,7 @@ define([
             Backbone.View.prototype.remove.call(this, attributes);
         },
 
-        render: function () {
+        render: function() {
             //compile handlebars template with appropriate markup of components
             var html = this.template();
             //append appropriate content to root element right away after compilation
