@@ -34,13 +34,16 @@ define([
         processQuestion : function (event) {
             event.preventDefault();
 
-            if(this.categoryType && this.categoryType == 0) {
+            if(this.categoryType) {
                 var model = new AnswerModel();
                 var answer = $(event.currentTarget).attr('answer');
                 var questionId = $(event.currentTarget).attr('question');
                 model.set('answer',answer);
                 model.set('questionId',questionId);
                 model.set('category',this.options.categoryId);
+                if (this.categoryType == 1) {
+                    model.set('text', this.$el.find('textarea[question="' + questionId + '"]').val());
+                }
                 this.answersCollection.add(model);
                 this.$el.find('div[row-id="' + questionId + '"]').hide();
             } else {
@@ -56,14 +59,14 @@ define([
         },
 
         removeFeedbackTypeError: function (event) {
-            
+
             if(this.$el.find('div.error-box').css('display') == 'block') {
                 this.$el.find('div.error-box').css('display','none');
                 this.$el.find('div.feedback-type').css('border','none');
             }
             var value = this.$el.find('input[type=radio]:checked').val();
             this.categoryType = value;
-            if (value == 1) {
+            if (value == 0) {
                 this.$el.find('textarea').hide();
             } else {
                 this.$el.find('textarea').show();
