@@ -110,14 +110,7 @@
         "type": "yesno"
       },
       {
-        "question": Ich
-        nehme
-        meinen
-        Beitrag
-        zum
-        Unternehmenserfolg
-        wahr
-        ",
+        "question": "Ich nehme meinen Beitrag zum Unternehmenserfolg wahr",
         "type": "yesno"
       },
       {
