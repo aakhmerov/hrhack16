@@ -13,6 +13,7 @@ import java.security.SecureRandom;
 @XmlRootElement
 @Data
 public class AuthorizationTO {
+    private static final String TOKEN = "auth_token";
 
     private boolean authorized ;
     private String token = nextSessionId();
@@ -21,7 +22,7 @@ public class AuthorizationTO {
     private User user;
 
     public String nextSessionId() {
-        return "auth_token=" + new BigInteger(130, new SecureRandom()).toString(32);
+        return TOKEN + "=" + new BigInteger(130, new SecureRandom()).toString(32);
     }
 
     public boolean isAuthorized() {
