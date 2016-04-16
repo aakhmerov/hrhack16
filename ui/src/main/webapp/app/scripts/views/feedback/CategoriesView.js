@@ -34,8 +34,7 @@ define([
         processQuestion : function (event) {
             event.preventDefault();
 
-            var categoryType = $('input[name=type]:checked', '.feedback-type').val();
-            if(categoryType != undefined) {
+            if(this.categoryType && this.categoryType == 0) {
                 var model = new AnswerModel();
                 var answer = $(event.currentTarget).attr('answer');
                 var questionId = $(event.currentTarget).attr('question');
@@ -56,10 +55,18 @@ define([
             console.log(this.answersCollection.toJSON());
         },
 
-        removeFeedbackTypeError: function () {
-            if($('div.error-box').css('display') == 'block') {
-                $('div.error-box').css('display','none');
-                $('div.feedback-type').css('border','none');
+        removeFeedbackTypeError: function (event) {
+            
+            if(this.$el.find('div.error-box').css('display') == 'block') {
+                this.$el.find('div.error-box').css('display','none');
+                this.$el.find('div.feedback-type').css('border','none');
+            }
+            var value = this.$el.find('input[type=radio]:checked').val();
+            this.categoryType = value;
+            if (value == 1) {
+                this.$el.find('textarea').hide();
+            } else {
+                this.$el.find('textarea').show();
             }
             return;
         },
