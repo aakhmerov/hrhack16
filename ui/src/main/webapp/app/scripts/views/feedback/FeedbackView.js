@@ -6,11 +6,12 @@ define([
     'jquery',
     'underscore',
     'backbone',
+    'models/security/AuthenticationModel',
     'text!templates/feedback/feedback.html',
     'models/feedbck/FeedbackModel',
     //dirty hack for handlebars loading wait
     'handlebars'
-], function($, _, Backbone, feedback,FeedbackModel,Handlebars) {
+], function($, _, Backbone, AuthenticationModel, feedback,FeedbackModel,Handlebars) {
 
     var FeedbackView = Backbone.View.extend({
 
@@ -33,7 +34,7 @@ define([
         render: function() {
             //compile handlebars template
             var data = {
-                account : 'Employee'
+                account : AuthenticationModel.get('user').name
             };
 
             this.$el.html(this.template(data));
