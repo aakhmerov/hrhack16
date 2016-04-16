@@ -4,18 +4,20 @@
   <div class="row">
     <div class="row  feedback-type">
       <span class="col-md-4 col-md-offset-2">
-        <input type="radio" name="type"><label>Feedback Anonym abgeben</label>
+        <input id="anonym" type="radio" name="type" value="0"><label>Feedback Anonym abgeben</label>
       </span>
       <span class="col-md-4 col-md-offset-1 text-right">
-        <input type="radio" name="type"><label>Feedback mit freitext abgeben</label>
+        <input id="directly" type="radio" name="type" value="1"><label>Feedback mit freitext abgeben</label>
       </span>
+      <div class="error-box col-md-4 col-md-offset-4">Please choose feedback type</div>
     </div>
+
     <div class="row text-center bottom">
-      <div class="row middle box-1"><button class="col-xs-4 col-md-offset-4 btn">Kategorie 1</button></div>
-      <div class="row middle box-1"><button class="col-xs-4 col-md-offset-4 btn">Kategorie 2</button></div>
-      <div class="row middle box-1"><button class="col-xs-4 col-md-offset-4 btn">Kategorie 3</button></div>
-      <div class="row middle box-1"><button class="col-xs-4 col-md-offset-4 btn">Kategorie 4</button></div>
-      <div class="row middle box-1"><button class="col-xs-4 col-md-offset-4 btn">Kategorie 5</button></div>
+      <div class="row middle box-1"><button class="category col-xs-4 col-md-offset-4 btn" value="1">Kategorie 1</button></div>
+      <div class="row middle box-1"><button class="category col-xs-4 col-md-offset-4 btn" value="2">Kategorie 2</button></div>
+      <div class="row middle box-1"><button class="category col-xs-4 col-md-offset-4 btn" value="3">Kategorie 3</button></div>
+      <div class="row middle box-1"><button class="category col-xs-4 col-md-offset-4 btn" value="4">Kategorie 4</button></div>
+      <div class="row middle box-1"><button class="category col-xs-4 col-md-offset-4 btn" value="5">Kategorie 5</button></div>
     </div>
   </div>
 

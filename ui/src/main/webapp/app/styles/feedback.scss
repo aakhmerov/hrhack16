@@ -20,8 +20,14 @@
             padding: 1px;
         }
     }
+    .error-box {
+        display: none;
+        color: red;
+        text-align: center;
+    }
 
     .feedback-type {
+        margin-bottom: 5px;
         span {
             label {
                 padding-left: 5px;
