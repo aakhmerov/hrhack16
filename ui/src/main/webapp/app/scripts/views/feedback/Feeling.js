@@ -15,9 +15,19 @@ define([
 
     template : Handlebars.compile(feeling),
 
+    events : {
+      'click .next' : 'categories'
+    },
+
+
     initialize : function() {
 //            nothing to do here
       //this.model = new FeedbackModel();
+    },
+
+    categories : function(event) {
+      event.preventDefault();
+      window.router.navigate("feedback/give", {trigger: true});
     },
 
     render: function() {
