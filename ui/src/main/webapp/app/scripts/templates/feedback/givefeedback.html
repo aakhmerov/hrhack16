@@ -1,23 +1,21 @@
 <div class="container feedback-page">
-  <h3 class="text-center row">Wozu möchten Sie Feedback abgeben?</h3>
+  <h3 class="text-center">Wozu möchten Sie Feedback abgeben?</h3>
 
   <div class="row">
-    <div class="row  feedback-type">
-      <span class="col-md-4 col-md-offset-2">
-        <input id="anonym" type="radio" name="type" value="0"><label>Feedback Anonym abgeben</label>
+    <div class="row feedback-type text-center">
+      <span class="col-md-6">
+        <input type="radio" name="type" id="anonymous" value="0"><label for="anonymous">Feedback Anonym abgeben</label>
       </span>
-      <span class="col-md-4 col-md-offset-1 text-right">
-        <input id="directly" type="radio" name="type" value="1"><label>Feedback mit freitext abgeben</label>
+      <span class="col-md-6">
+        <input type="radio" name="type" id="not-anonymous" value="1"><label for="not-anonymous">Feedback mit freitext abgeben</label>
       </span>
       <div class="error-box col-md-4 col-md-offset-4">Please choose feedback type</div>
     </div>
 
     <div class="row text-center bottom">
-      <div class="row middle box-1"><button class="category col-xs-4 col-md-offset-4 btn" value="1">Kategorie 1</button></div>
-      <div class="row middle box-1"><button class="category col-xs-4 col-md-offset-4 btn" value="2">Kategorie 2</button></div>
-      <div class="row middle box-1"><button class="category col-xs-4 col-md-offset-4 btn" value="3">Kategorie 3</button></div>
-      <div class="row middle box-1"><button class="category col-xs-4 col-md-offset-4 btn" value="4">Kategorie 4</button></div>
-      <div class="row middle box-1"><button class="category col-xs-4 col-md-offset-4 btn" value="5">Kategorie 5</button></div>
+      {{#each categories}}
+      <div class="row middle box-1"><button class="category col-xs-4 col-xs-offset-4 btn" value="{{inc @index}}">{{name}}</button></div>
+      {{/each}}
     </div>
   </div>
 

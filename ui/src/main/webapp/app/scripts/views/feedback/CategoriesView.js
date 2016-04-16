@@ -2,31 +2,39 @@
  * Created by kdiawara on 16.04.16.
  */
 define([
-  'jquery',
-  '../../../bower_components/underscore/underscore',
-  'backbone',
-  'text!templates/feedback/categories.html',
-  //dirty hack for handlebars loading wait
-  'handlebars'
-], function($, _, Backbone, feedback,Handlebars) {
+    'jquery',
+    'underscore',
+    'backbone',
+    'text!templates/feedback/categories.html',
+    'collections/categories/CategoriesCollection',
+    //dirty hack for handlebars loading wait
+    'handlebars'
+], function ($, _, Backbone, categories,CategoriesCollection, Handlebars) {
 
-  var GiveFeedbackView = Backbone.View.extend({
+    var CategoriesView = Backbone.View.extend({
 
-    template : Handlebars.compile(feedback),
+        template: Handlebars.compile(categories),
 
-    initialize : function() {
+        initialize: function (options) {
 //            nothing to do here
-    },
+            this.options = options;
+            _.bindAll(this,'render');
+            this.collection = new CategoriesCollection();
+            $.when(this.collection.fetch()).then(this.render);
+        },
 
+        render: function () {
+            this.$el.empty();
+            var data = {
+                "categoryId" : this.options.categoryId,
+                "category" : this.collection.toJSON()[this.options.categoryId]
+            };
+            this.$el.append(this.template(data));
+            return this;
+        }
 
+    });
 
-    render: function() {
-      this.$el.html(this.template());
-      return this;
-    }
-
-  });
-
-  return GiveFeedbackView;
+    return CategoriesView;
 
 });

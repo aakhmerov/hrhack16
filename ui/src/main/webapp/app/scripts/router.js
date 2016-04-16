@@ -95,10 +95,12 @@ define([
             require(['views/feedback/GiveFeedbackView'], this.showPage);
         },
 
-        categories : function (event, attributes) {
+        categories : function (id) {
             this.showParams = {
                 el: '#page',
-                id: arguments[0]
+                mainContentOptions: {
+                    categoryId: id
+                }
             };
             require(['views/feedback/CategoriesView'], this.showPage);
         },

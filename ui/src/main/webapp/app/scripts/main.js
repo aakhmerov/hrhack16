@@ -25,6 +25,11 @@ require([
     'backbone',
     'handlebars',
     'router'
-], function (Backbone,handlebars, Router) {
+], function (Backbone,Handlebars, Router) {
     Router.initialize();
+
+    Handlebars.registerHelper("inc", function(value, options)
+    {
+        return parseInt(value) + 1;
+    });
 });
