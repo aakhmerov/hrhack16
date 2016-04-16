@@ -20,6 +20,8 @@ define([
             // Define some URL routes
             '': 'showHome',
             'home': 'showHome',
+            'login':'login',
+            'feeling':'feeling',
             'feedback/give' : 'giveFeedback',
             // Default actions handling
             '*actions': 'defaultAction'
@@ -27,7 +29,7 @@ define([
 
 
         initialize: function () {
-            _.bindAll(this, 'showHome', 'defaultAction', 'showPage',
+            _.bindAll(this, 'showHome','login','feeling', 'defaultAction', 'showPage',
                 'removeCurrentView', 'setView','giveFeedback');
         },
 
@@ -59,6 +61,20 @@ define([
                 el: '#page'
             };
             require(['views/feedback/FeedbackView'], this.showPage);
+        },
+
+        login: function (event, attributes) {
+            this.showParams = {
+                el:'#page'
+            };
+            require(['views/Login'], this.showPage);
+        },
+
+        feeling: function () {
+            this.showParams = {
+                el:'#page'
+            };
+            require(['views/feedback/Feeling'], this.showPage);
         },
 
         giveFeedback : function (event, attributes) {

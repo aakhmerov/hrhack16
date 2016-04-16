@@ -27,7 +27,7 @@ define([
 
         giveFeedback : function (event){
             event.preventDefault();
-            window.router.navigate("feedback/give", {trigger: true});
+            window.router.navigate("feeling", {trigger: true});
         },
 
         render: function() {
