@@ -4,9 +4,9 @@
 
 define([
     'jquery',
-    'underscore',
+    '../../../bower_components/underscore/underscore',
     'backbone',
-    'text!templates/feedback/give/givefeedback.html',
+    'text!templates/feedback/givefeedback.html',
     //dirty hack for handlebars loading wait
     'handlebars'
 ], function($, _, Backbone, feedback,Handlebars) {

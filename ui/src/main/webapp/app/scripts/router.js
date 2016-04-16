@@ -81,7 +81,7 @@ define([
             this.showParams = {
                 el: '#page'
             };
-            require(['views/feedback/give/GiveFeedbackView'], this.showPage);
+            require(['views/feedback/GiveFeedbackView'], this.showPage);
         },
 
         defaultAction: function () {
