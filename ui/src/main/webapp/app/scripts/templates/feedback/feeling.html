@@ -1,20 +1,22 @@
 <div class="feelingContainer">
-  <h3 class="text-center row">Wie fühlen Sie sich gerade?</h3>
+  <div class="row">
+    <h3 class="text-center">Wie fühlen Sie sich gerade?</h3>
+  </div>
 
   <div class="feelingType row">
     <input type="range" name="feelingType" id="feelingType" value="50" min="0" max="100" step="10" />
-    <span class="col-md-4 col-md-offset-0">Ruhig</span>
-    <span class="col-md-4 col-md-offset-4 text-right">Aufgebracht</span>
+    <span class="col-md-4 pull-left">Ruhig</span>
+    <span class="col-md-4 pull-right text-right">Aufgebracht</span>
     <!--<output name="x" for="feelingType">50</output>-->
   </div>
   <div class="feelingMoment row">
     <input type="range" name="feelingMoment" id="feelingMoment" value="50" min="0" max="100" step="10"/>
-    <span class="col-md-4 col-md-offset-0">Nur jetzt</span>
-    <span class="col-md-4 col-md-offset-4 text-right">Dauerhaft</span>
+    <span class="col-md-4 pull-left">Nur jetzt</span>
+    <span class="col-md-4 pull-right text-right">Dauerhaft</span>
     <!--<output name="x" for="feelingMoment">50</output>-->
   </div>
-  <div class="text-center row middle">
-    <button class="col-xs-0 col-md-auto next btn">Weiter</button>
+  <div class="text-center row">
+    <button class="col-xs-12 next btn">Weiter</button>
   </div>
 
 
