@@ -1,0 +1,11 @@
+[
+  {
+    "name" : "test",
+    "questions" : [
+      {
+        "question" : "What's up?",
+        "type" : "yesno"
+      }
+    ]
+  }
+]
