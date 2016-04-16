@@ -40,8 +40,11 @@ define([
             if (AuthenticationModel.isAuthenticated()) {
                 this.showParams.mainContent = MainView;
             } else {
-                this.showParams.mainContent = this.showParams.authNotRequired ?  MainView: Login;
-                this.showParams.headerContent = null;
+                if (MainView != Login) {
+                    window.router.navigate("login", {trigger: true, replace: true});
+                } else {
+                    this.showParams.mainContent = MainView;
+                }
             }
             var pageContainer = $('<div></div>').attr({id: 'page'});
             $('body').append(pageContainer);

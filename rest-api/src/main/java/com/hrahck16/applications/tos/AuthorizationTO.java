@@ -21,7 +21,7 @@ public class AuthorizationTO {
     private User user;
 
     public String nextSessionId() {
-        return new BigInteger(130, new SecureRandom()).toString(32);
+        return "auth_token=" + new BigInteger(130, new SecureRandom()).toString(32);
     }
 
     public boolean isAuthorized() {

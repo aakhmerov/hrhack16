@@ -5,7 +5,11 @@ define([
 ], function ($, _, Backbone) {
 
     var AuthenticationModel = Backbone.Model.extend({
-        url: 'api/authentication',
+        url: function () {
+            var result = 'api/authentication';
+            
+            return result;
+        },
 
         initialize: function (options) {
             _.bindAll(this, 'cleanCookies', 'isAuthenticated', 'parse', 'update');

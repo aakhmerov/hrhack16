@@ -25,6 +25,7 @@ import java.util.HashMap;
 @EnableAutoConfiguration
 public class AuthenticationRestController {
 
+    private static final String TOKEN = "auth_token";
     @Autowired
     private UserService userService;
 
@@ -34,11 +35,16 @@ public class AuthenticationRestController {
     @Path("/")
     @Produces({ MediaType.APPLICATION_JSON })
     public AuthorizationTO checkUser(@Context HttpServletRequest request) {
-        AuthorizationTO result = new AuthorizationTO();
+        AuthorizationTO result = null;
         if (request.getCookies() != null) {
             for (Cookie c : request.getCookies()) {
-                System.out.println(c.getName());
+                if (TOKEN.equals(c.getName())) {
+                    result = this.userSessions.get(c.getName()+"=" + c.getValue());
+                }
             }
+        }
+        if (result == null) {
+            result = new AuthorizationTO();
         }
         return result;
     }

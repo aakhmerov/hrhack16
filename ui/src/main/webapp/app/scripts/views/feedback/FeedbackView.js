@@ -34,7 +34,8 @@ define([
         render: function() {
             //compile handlebars template
             var data = {
-                account : AuthenticationModel.get('user').name
+                name : AuthenticationModel.get('user').name,
+                lastname : AuthenticationModel.get('user').lastName
             };
 
             this.$el.html(this.template(data));
