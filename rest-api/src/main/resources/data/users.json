@@ -1,0 +1,53 @@
+[
+  {
+    "username" : "test",
+    "password" : "test",
+    "division" : "IT",
+    "lastName" : "Mustermann",
+    "name" : "Max",
+    "role" : "mitarbeiter"
+  },
+  {
+    "username" : "Chris",
+    "password" : "12345",
+    "division" : "IT",
+    "lastName" : "Great",
+    "name" : "Christoph",
+    "role" : "mitarbeiter"
+  },
+  {
+    "username" : "Tessa",
+    "password" : "11223",
+    "division" : "HR",
+    "lastName" : "Hurray",
+    "name" : "Theresa",
+    "role" : "mitarbeiter"
+  },
+  {
+
+    "username" : "Rob",
+    "password" : "89101",
+    "division" : "Sales",
+    "lastName" : "Talk",
+    "name" : "Robin",
+    "role" : "mitarbeiter"
+  },
+  {
+
+    "username" : "Mike",
+    "password" : "10001",
+    "division" : "IT",
+    "lastName" : "Fantastic",
+    "name" : "Michael",
+    "role" : "Teamlead"
+  },
+  {
+
+    "username" : "Steffi",
+    "password" : "56789",
+    "division" : "Sales",
+    "lastName" : "Müller",
+    "name" : "Stephanie",
+    "role" : "mitarbeiter"
+  }
+]
