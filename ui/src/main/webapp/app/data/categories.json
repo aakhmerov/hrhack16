@@ -1,10 +1,161 @@
 [
   {
-    "name" : "test",
-    "questions" : [
+    "name": "Tätigkeiten",
+    "questions": [
       {
-        "question" : "What's up?",
-        "type" : "yesno"
+        "question": "Meine Tätigkeiten sind abwechslungsreich",
+        "type": "yesno"
+      },
+      {
+        "question": "Meine Tätigkeiten entsprechen meiner Qualifikation",
+        "type": "yesno"
+      },
+      {
+        "question": "Meine Tätigkeiten entsprechen meinem Karriereplan",
+        "type": "yesno"
+      },
+      {
+        "question": "Ich  finde meine Tätigkeit sinnvoll",
+        "type": "yesno"
+      },
+      {
+        "question": "Ich habe einen Ansprechpartner bei Fragen",
+        "type": "yesno"
+      },
+      {
+        "question": "Ich kann in meinem Verantwortungsbereich eigenen Entscheidungen treffen",
+        "type": "yesno"
+      },
+      {
+        "question": "Entscheidungen werden umgesetzt",
+        "type": "yesno"
+      }
+    ]
+  },
+  {
+    "name": "Zielvereinbarung",
+    "questions": [
+      {
+        "question": "Meine Zielvereinbarung ist realistisch",
+        "type": "yesno"
+      },
+      {
+        "question": "Ich kann meine Zielvereinbarung alleine erreichen",
+        "type": "yesno"
+      },
+      {
+        "question": "Meine Zielvereinbarung ist abgesprochen",
+        "type": "yesno"
+      },
+      {
+        "question": "Ich kenne meine Ziele",
+        "type": "yesno"
+      },
+      {
+        "question": "Ich weiß, wie ich meine Ziele erreichen soll",
+        "type": "yesno"
+      },
+      {
+        "question": "Ich weiß, wie meine Zielsetzung zum Unternehmenserfolg beiträgt",
+        "type": "yesno"
+      },
+      {
+        "question": "Mir werden die benötigten Ressourcen zur Verfügung gestellt",
+        "type": "yesno"
+      }
+    ]
+  },
+  {
+    "name": "Entwicklungsmöglichkeiten",
+    "questions": [
+      {
+        "question": "Ich bekomme neue Herausforderungen",
+        "type": "yesno"
+      },
+      {
+        "question": "Mein Tätigkeitsbereich bietet Abwechslung",
+        "type": "yesno"
+      },
+      {
+        "question": "Ich kann mich weiterbilden",
+        "type": "yesno"
+      },
+      {
+        "question": "Meine Entwicklungsmöglichkeiten werden thematisiert",
+        "type": "yesno"
+      },
+      {
+        "question": "Ich sehe vielfältige Entwicklungsmöglichkeiten",
+        "type": "yesno"
+      },
+      {
+        "question": "Ich kann meine Ideen einbringen",
+        "type": "yesno"
+      }
+    ]
+  },
+  {
+    "name": "Wertschätzung",
+    "questions": [
+      {
+        "question": "Meine Führungskraft behandelt alle Kollegen gleich",
+        "type": "yesno"
+      },
+      {
+        "question": "Meine Führungskraft lobt mich ausreichend",
+        "type": "yesno"
+      },
+      {
+        "question": "Meine Arbeit wird honoriert",
+        "type": "yesno"
+      },
+      {
+        "question": Ich
+        nehme
+        meinen
+        Beitrag
+        zum
+        Unternehmenserfolg
+        wahr
+        ",
+        "type": "yesno"
+      },
+      {
+        "question": "Meine Führungskraft unterstützt mich",
+        "type": "yesno"
+      },
+      {
+        "question": "Ich kann meiner Führungskraft vertrauen",
+        "type": "yesno"
+      }
+    ]
+  },
+  {
+    "name": "Kommunikation",
+    "questions": [
+      {
+        "question": "Der Gesprächston ist angemessen",
+        "type": "yesno"
+      },
+      {
+        "question": "Der Respekt ist im Gespräch gegeben",
+        "type": "yesno"
+      },
+      {
+        "question": "Ich werde ausreichend informiert",
+        "type": "yesno"
+      },
+      {
+        "question": "Ich habe das Gefühl, ich werde in Entscheidungen einbezogen",
+        "type": "yesno"
+      },
+      {
+        "question": "Die Atmosphäre in der Abteilung ist entspannt",
+        "type": "yesno"
+      },
+      {
+        "question": "Ich habe das Gefühl, Teil eines Teams zu sein",
+        "type": "yesno"
       }
     ]
   }
