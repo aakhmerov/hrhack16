@@ -31,8 +31,8 @@ define([
       event.preventDefault();
       this.model = new FeelingModel();
       this.model.set('type',this.$el.find("#feelingType").val());
-      this.model.set('moent',this.$el.find("#feelingMoment").val());
-      console.log(this.model.toJSON());
+      this.model.set('moment',this.$el.find("#feelingMoment").val());
+      this.model.save();
       window.router.navigate("feedback/give", {trigger: true});
     },
 

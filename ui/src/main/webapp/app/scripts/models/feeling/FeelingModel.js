@@ -9,6 +9,8 @@ define([
 
     var FeelingModel = Backbone.Model.extend({
 
+        url : 'api/feeling',
+
         initialize: function () {
             _.bindAll(this, 'parse');
         },

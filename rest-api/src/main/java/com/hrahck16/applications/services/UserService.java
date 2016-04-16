@@ -3,9 +3,11 @@ package com.hrahck16.applications.services;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hrahck16.applications.domain.User;
 import com.hrahck16.applications.tos.AuthorizationTO;
+import com.hrahck16.applications.tos.FeelingTO;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.Cookie;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -16,8 +18,11 @@ import java.util.List;
  */
 @Component
 public class UserService {
+    private static final String TOKEN = "auth_token";
+    private HashMap <String, AuthorizationTO> userSessions = new HashMap<String, AuthorizationTO>();
 
     private HashMap <String, User> users = new HashMap<String, User>();
+    private HashMap <String, FeelingTO> userFeelings = new HashMap<String, FeelingTO>();
 
     @PostConstruct
     public void init() {
@@ -35,5 +40,46 @@ public class UserService {
 
     public User findUser(AuthorizationTO authorizationTO) {
         return users.get(authorizationTO.getUsername());
+    }
+
+    public void processFeeling(FeelingTO feelingTO, Cookie[] cookies) {
+        if (cookies != null) {
+            for (Cookie c : cookies) {
+                if (TOKEN.equals(c.getName())) {
+                    this.userFeelings.put(c.getName()+"=" + c.getValue(), feelingTO);
+                }
+            }
+        }
+    }
+
+    public AuthorizationTO getAuthorization(Cookie[] cookies) {
+        AuthorizationTO result = null;
+        if (cookies != null) {
+            for (Cookie c : cookies) {
+                if (TOKEN.equals(c.getName())) {
+                    result = this.userSessions.get(c.getName()+"=" + c.getValue());
+                }
+            }
+        }
+        if (result == null) {
+            result = new AuthorizationTO();
+        }
+        return result;
+    }
+
+    /**
+     *
+     * @param authorizationTO
+     * @return
+     */
+    public AuthorizationTO authorize(AuthorizationTO authorizationTO) {
+        User existing = this.findUser(authorizationTO);
+
+        if (existing != null) {
+            authorizationTO.setAuthorized(true);
+            authorizationTO.setUser(existing);
+        }
+        this.userSessions.put(authorizationTO.getToken(),authorizationTO);
+        return authorizationTO;
     }
 }
