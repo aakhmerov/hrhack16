@@ -7,9 +7,10 @@ define([
   'underscore',
   'backbone',
   'text!templates/feedback/feeling.html',
+    'models/feeling/FeelingModel',
   //dirty hack for handlebars loading wait
   'handlebars'
-], function($, _, Backbone, feeling, Handlebars) {
+], function($, _, Backbone, feeling,FeelingModel, Handlebars) {
 
   var FeelingView = Backbone.View.extend({
 
@@ -23,10 +24,15 @@ define([
     initialize : function() {
 //            nothing to do here
       //this.model = new FeedbackModel();
+      _.bindAll(this,'render','categories');
     },
 
     categories : function(event) {
       event.preventDefault();
+      this.model = new FeelingModel();
+      this.model.set('type',this.$el.find("#feelingType").val());
+      this.model.set('moent',this.$el.find("#feelingMoment").val());
+      console.log(this.model.toJSON());
       window.router.navigate("feedback/give", {trigger: true});
     },
 
