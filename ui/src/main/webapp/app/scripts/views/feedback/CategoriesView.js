@@ -26,7 +26,8 @@ define([
         render: function () {
             this.$el.empty();
             var data = {
-                "caegories" : this.collection.toJSON()
+                "categoryId" : this.options.categoryId,
+                "category" : this.collection.toJSON()[this.options.categoryId]
             };
             this.$el.append(this.template(data));
             return this;
