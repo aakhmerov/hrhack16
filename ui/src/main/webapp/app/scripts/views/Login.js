@@ -6,10 +6,11 @@ define([
     'jquery',
     'underscore',
     'backbone',
+    'models/security/AuthenticationModel',
     'text!templates/login.html',
     //dirty hack for handlebars loading wait
     'handlebars'
-], function ($, _, Backbone, login, Handlebars) {
+], function ($, _, Backbone,AuthenticationModel, login, Handlebars) {
 
     var LoginView = Backbone.View.extend({
 
@@ -23,6 +24,8 @@ define([
 
         initialize: function () {
 //            nothing to do here
+            _.bindAll(this,'handleLogin','handleAuthenticationResult','handleAuthenticationError',
+                'navigateHome','render');
         },
         handleLogin : function (event){
             event.preventDefault();
