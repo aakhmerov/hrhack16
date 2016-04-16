@@ -16,14 +16,27 @@ define([
 
         template : Handlebars.compile(feedback),
 
+        events : {
+            'click .give-feedback' : 'giveFeedback'
+        },
+
         initialize : function() {
 //            nothing to do here
             this.model = new FeedbackModel();
         },
 
+        giveFeedback : function (event){
+            event.preventDefault();
+            window.router.navigate("feedback/give", {trigger: true});
+        },
+
         render: function() {
             //compile handlebars template
-            this.$el.html(this.template());
+            var data = {
+                account : 'Employee'
+            };
+
+            this.$el.html(this.template(data));
             return this;
         }
 

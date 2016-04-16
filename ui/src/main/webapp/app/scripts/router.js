@@ -20,6 +20,7 @@ define([
             // Define some URL routes
             '': 'showHome',
             'home': 'showHome',
+            'feedback/give' : 'giveFeedback',
             // Default actions handling
             '*actions': 'defaultAction'
         },
@@ -27,7 +28,7 @@ define([
 
         initialize: function () {
             _.bindAll(this, 'showHome', 'defaultAction', 'showPage',
-                'removeCurrentView', 'setView');
+                'removeCurrentView', 'setView','giveFeedback');
         },
 
         showPage: function (MainView, HeaderView, FooterView) {
@@ -58,6 +59,13 @@ define([
                 el: '#page'
             };
             require(['views/feedback/FeedbackView'], this.showPage);
+        },
+
+        giveFeedback : function (event, attributes) {
+            this.showParams = {
+                el: '#page'
+            };
+            require(['views/feedback/give/GiveFeedbackView'], this.showPage);
         },
 
         defaultAction: function () {
