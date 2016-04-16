@@ -17,7 +17,7 @@ define([
         template : Handlebars.compile(feedback),
 
         events : {
-            'click .category' : 'getCategories',
+            'click .category' : 'getCategories'
         },
 
         initialize : function() {

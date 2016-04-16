@@ -26,6 +26,7 @@ define([
             'feeling':'feeling',
             'feedback/give' : 'giveFeedback',
             'feedback/categories/:id' : 'categories',
+            'feedback/preview' : 'preview',
             // Default actions handling
             '*actions': 'defaultAction'
         },
@@ -33,7 +34,7 @@ define([
 
         initialize: function () {
             _.bindAll(this, 'showHome','login','feeling', 'defaultAction', 'showPage',
-                'removeCurrentView', 'setView','giveFeedback', 'categories');
+                'removeCurrentView', 'setView','giveFeedback', 'categories', 'preview');
         },
 
         showPage: function (MainView, HeaderView, FooterView) {
@@ -103,6 +104,13 @@ define([
                 }
             };
             require(['views/feedback/CategoriesView'], this.showPage);
+        },
+
+        preview: function () {
+            this.showParams = {
+                el: '#page'
+            };
+            require(['views/feedback/Preview'], this.showPage);
         },
 
         defaultAction: function () {

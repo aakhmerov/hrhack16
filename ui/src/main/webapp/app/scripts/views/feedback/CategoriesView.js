@@ -49,6 +49,7 @@ define([
             } else {
                 $('div.error-box').css('display','block');
                 $('div.feedback-type').css('border','1px solid red');
+                $('div.feedback-type').addClass('error')
             }
 
         },
@@ -61,8 +62,10 @@ define([
         removeFeedbackTypeError: function (event) {
 
             if(this.$el.find('div.error-box').css('display') == 'block') {
+                var feedbackType = this.$el.find('div.feedback-type');
                 this.$el.find('div.error-box').css('display','none');
-                this.$el.find('div.feedback-type').css('border','none');
+                feedbackType.css('border','none');
+                feedbackType.removeClass('error');
             }
             var value = this.$el.find('input[type=radio]:checked').val();
             this.categoryType = value;
