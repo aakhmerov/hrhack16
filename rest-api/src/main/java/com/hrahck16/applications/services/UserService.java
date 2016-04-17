@@ -2,10 +2,7 @@ package com.hrahck16.applications.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hrahck16.applications.domain.User;
-import com.hrahck16.applications.tos.AuthorizationTO;
-import com.hrahck16.applications.tos.DashboardTO;
-import com.hrahck16.applications.tos.FeedbackTO;
-import com.hrahck16.applications.tos.FeelingTO;
+import com.hrahck16.applications.tos.*;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -102,5 +99,9 @@ public class UserService {
         }
         result.setTotalFeedbacks(fedbacks);
         return result;
+    }
+
+    public void processAnswers(List<AnswerTO> answers, Cookie[] cookies) {
+
     }
 }
