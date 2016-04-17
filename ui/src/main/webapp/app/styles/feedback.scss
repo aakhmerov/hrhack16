@@ -25,10 +25,6 @@
             padding: 1px;
         }
 
-        .editButton {
-            position: relative;
-            top: -35px;
-        }
     }
     .error-box {
         display: none;
@@ -55,6 +51,14 @@
         display: inline-block;
         background: lightgreen;
         width: 100%;
+        .description, .textStyle{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -o-text-overflow: ellipsis;
+            white-space: nowrap;
+            padding: 0px 10px;
+            margin-bottom: 10px;
+        }
     }
 
     .feedback-type {

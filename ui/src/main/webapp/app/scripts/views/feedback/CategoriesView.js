@@ -49,16 +49,26 @@ define([
             event.preventDefault();
 
             if(this.categoryType) {
+
+
+
                 var model = new AnswerModel();
                 var answer = $(event.currentTarget).attr('answer');
                 var questionId = $(event.currentTarget).attr('question');
+                var questionNr = parseInt(questionId) + 1;
                 var question = this.collection.toJSON()[this.options.categoryId - 1].questions[questionId];
+                var problemDescription = '';
+                var problemDescriptionHtlm = '';
                 model.set('answer',answer);
                 model.set('question',questionId);
                 model.set('category',this.options.categoryId);
                 model.set('tag',question.tag);
                 if (this.categoryType == 1) {
-                    model.set('text', this.$el.find('textarea[question="' + questionId + '"]').val());
+                    problemDescription = this.$el.find('textarea[question="' + questionId + '"]').val();
+                    if(problemDescription) {
+                        problemDescriptionHtlm = '<label>Ihre Problem Beschreibung: </label><div class="description">'+problemDescription+'</div>';
+                    }
+                    model.set('text', problemDescription);
                 }
                 if (this.answeredQuestions.indexOf(questionId) < 0 ) {
                     this.answersCollection.add(model);
@@ -71,7 +81,7 @@ define([
                 fm.save();
                 //persist information in local storage
                 localStorage.setItem('feedback', JSON.stringify(fm.toJSON()));
-                this.processActiveRow(questionId,question.question);
+                this.processActiveRow(questionId,question.question, problemDescriptionHtlm, answer);
             } else {
                 $('div.error-box').css('display','block');
                 $('div.feedback-type').css('border','1px solid red');
@@ -80,14 +90,24 @@ define([
 
         },
 
-        processActiveRow : function (questionId,questionText) {
+        processActiveRow : function (questionId,questionText, problemDescriptionHtlm, answer) {
+            var answerMaaping = {
+              'yes': 'zu gestimmt',
+              'skip': 'nicht relevant',
+              'no': 'nicht zu gestimmt',
+            };
             var questionNr = parseInt(questionId) + 1;
             var activeRow =  this.$el.find('div[row-id="' + questionId + '"]');
-            var answerElement = '<div id="'+questionId+'" class="answers-question-block">' +
-                '<label> Frage:'+ questionNr + '</label>' +
-                '<div>'+ questionText+'</div>' +
+            var answerElement = '' +
+              '<div id="'+questionId+'" class="answers-question-block">' +
+                '<div>' +
+                    '<label> Frage:'+ questionNr + '</label>' +
+                    '<span class="textStyle">'+ questionText+'</span>' +
+                '</div>'+problemDescriptionHtlm+
+                '<label>Antwort: </label>' +
+                '<span class="textStyle">' +answerMaaping[answer]+'</span>' +
                 '<div class="text-center bottom col-xs-12">' +
-                '<button class="col-xs-3 col-xs-offset-0 btn pull-right editButton">Bearbeiten</button>'+
+                    '<button class="col-xs-3 col-xs-offset-0 btn pull-right editButton">Bearbeiten</button>'+
                 '</div>' +
             '</div>';
             activeRow.after(answerElement);
