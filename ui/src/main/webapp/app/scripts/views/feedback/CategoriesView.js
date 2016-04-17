@@ -105,8 +105,11 @@ define([
                 "category" : this.collection.toJSON()[this.options.categoryId - 1]
             };
             this.$el.append(this.template(data));
+            for (i = 0; i < this.model.get('answers').length; i++) {
+                this.$el.find('div[row-id="' + this.model.get('answers')[i].question + '"]').hide();
+            }
             Backbone.Syphon.deserialize(this, this.model.toJSON());
-            this.removeFeedbackTypeError()
+            this.removeFeedbackTypeError();
             return this;
         }
 
