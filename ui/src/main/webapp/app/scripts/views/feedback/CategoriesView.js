@@ -64,6 +64,8 @@ define([
             var model = new FeedbackModel ();
             model.set('answers',this.answersCollection.toJSON());
             model.save();
+            //persist information in local storage
+            localStorage.setItem('feedback', model.toJSON());
 
             window.router.navigate("feedback/preview", {trigger: true});
         },

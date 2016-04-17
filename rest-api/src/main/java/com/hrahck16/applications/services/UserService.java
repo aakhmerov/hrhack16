@@ -115,7 +115,6 @@ public class UserService {
 //          this should update reference in both userFeedback and Division statistics
             this.userFeedback.get(auth.getToken()).setConfirmed(true);
         }
-
     }
 
 
