@@ -1,25 +1,37 @@
 <div class="container feedback-page" style="text-align : center;">
   <h3>Dies wird Ihre Führungskraft sehen:</h3>
-  <p class="text-left row">
-    Sehr geehrte {{lead}},<br>
-    <br>
-    eines Ihrer Teammitglieder hat ein Feedback eingreicht.<br>
-    Ihr Teammitglied möchte sich zu dem Bereich {{title}} äußern. Insgesamt betrachtet das Teammitglied die {{title}} {{overallState}}.<br>
-    An Ihrer Führung empfindet das Teammitglied die:
-    {{#each positive}}
+  <div class="text-left feedback-text row">
+    <p class="text-left">
+      Sehr geehrte {{lead}},<br>
+      <br>
+      eines Ihrer Teammitglieder hat ein Feedback eingreicht.<br>
+    </p>
+    <p class="text-left">
+      Ihr Teammitglied möchte sich zu dem Bereich {{title}} äußern. Insgesamt betrachtet das Teammitglied die {{title}} {{overallState}}.<br>
+    </p>
+    <p class="text-left">
+      An Ihrer Führung empfindet das Teammitglied die:
+      {{#each positive}}
       {{tag}},
-    {{/each}}
-    als positiv. Bitte behalten Sie diese Elemente in der Führung bei.<br>
-    Um eine Verbesserung für das Teammitglied zu erreichen, bitten wir Sie jedoch folgende Punkte zu überdenken: <br>
-    {{#each negative}}
-      {{tag}} <br>
-    {{/each}}
-    <br>
-    Um in diesen Bereichen Fortschritte zu erzielen, können Sie aus unserem Maßnahmenkatalog Beispiele entnehmen.<br>
-    Alternativ können Sie unter den Schaltflächen den Kontakt zur Personalabteilung herstellen oder ein Klärungsgespräch vorschlagen<br>
-  </p>
+      {{/each}}
+      als positiv. Bitte behalten Sie diese Elemente in der Führung bei.<br>
+    </p>
 
-  <div class="text-center bottom col-xs-12">
+    <p class="text-left">
+      Um eine Verbesserung für das Teammitglied zu erreichen, bitten wir Sie jedoch folgende Punkte zu überdenken: <br>
+      {{#each negative}}
+      {{tag}} <br>
+      {{/each}}
+    </p>
+
+    <p class="text-left">
+      Um in diesen Bereichen Fortschritte zu erzielen, können Sie aus unserem Maßnahmenkatalog Beispiele entnehmen.
+      Alternativ können Sie unter den Schaltflächen den Kontakt zur Personalabteilung herstellen oder ein Klärungsgespräch vorschlagen<br>
+    </p>
+
+  </div>
+
+  <div class="text-center bottom row">
     <button class="col-xs-3 col-md-offset-0 btn btn-default actionButton" name="action" value="send">Feedback absenden</button>
     <button class="col-xs-3 pull-right btn btn-default actionButton" name=action" value="edit">Feedback editieren</button>
   </div>
