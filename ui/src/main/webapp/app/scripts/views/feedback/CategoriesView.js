@@ -19,7 +19,7 @@ define([
         events : {
             'click .answerButton' : 'processQuestion',
             'click .preview' : 'processPreview',
-            'click input[type=radio]' : 'removeFeedbackTypeError'
+            'click input[type=radio]' : 'removeFeedbackTypeError',
         },
 
         initialize: function (options) {
@@ -56,7 +56,11 @@ define([
 
         processPreview : function (event) {
             event.preventDefault();
-            console.log(this.answersCollection.toJSON());
+            if(!this.answersCollection.length) {
+                alert('please choose question')
+            }
+            //save it before navigate to the preview view!!
+                window.router.navigate("feedback/preview", {trigger: true});
         },
 
         removeFeedbackTypeError: function (event) {
