@@ -4,31 +4,38 @@
     "questions": [
       {
         "question": "Meine Tätigkeiten sind abwechslungsreich",
-        "type": "yesno"
+        "type": "yesno",
+        "tag": "den Abwechslungsreichtum"
       },
       {
         "question": "Meine Tätigkeiten entsprechen meiner Qualifikation",
-        "type": "yesno"
+        "type": "yesno",
+        "tag": "die Orientierung an der Qualifikation"
       },
       {
         "question": "Meine Tätigkeiten entsprechen meinem Karriereplan",
-        "type": "yesno"
+        "type": "yesno",
+        "tag": "die Berücksichtigung des Karriereplans"
       },
       {
         "question": "Ich  finde meine Tätigkeit sinnvoll",
-        "type": "yesno"
+        "type": "yesno",
+        "tag": "die Sinnhaftigkeit"
       },
       {
         "question": "Ich habe einen Ansprechpartner bei Fragen",
-        "type": "yesno"
+        "type": "yesno",
+        "tag": "die Unterstützung bei Problemen"
       },
       {
         "question": "Ich kann in meinem Verantwortungsbereich eigenen Entscheidungen treffen",
-        "type": "yesno"
+        "type": "yesno",
+        "tag": "die Entscheidungsfreiheit"
       },
       {
         "question": "Entscheidungen werden umgesetzt",
-        "type": "yesno"
+        "type": "yesno",
+        "tag": "die Entscheidungsumsetzung"
       }
     ]
   },
@@ -37,31 +44,38 @@
     "questions": [
       {
         "question": "Meine Zielvereinbarung ist realistisch",
-        "type": "yesno"
+        "type": "yesno",
+        "tag": "die Orientierung an dem Arbeitspensum"
       },
       {
         "question": "Ich kann meine Zielvereinbarung alleine erreichen",
-        "type": "yesno"
+        "type": "yesno",
+        "tag": "die Machbarkeit"
       },
       {
         "question": "Meine Zielvereinbarung ist abgesprochen",
-        "type": "yesno"
+        "type": "yesno",
+        "tag": "den Dialog zur Vereinbarung der Mitarbeiterziele"
       },
       {
         "question": "Ich kenne meine Ziele",
-        "type": "yesno"
+        "type": "yesno",
+        "tag": "die Information über Ziele"
       },
       {
         "question": "Ich weiß, wie ich meine Ziele erreichen soll",
-        "type": "yesno"
+        "type": "yesno",
+        "tag": "den Weg zur Zielerreichung"
       },
       {
         "question": "Ich weiß, wie meine Zielsetzung zum Unternehmenserfolg beiträgt",
-        "type": "yesno"
+        "type": "yesno",
+        "tag": "über den Beitrag zum Unternehmenserfolg"
       },
       {
         "question": "Mir werden die benötigten Ressourcen zur Verfügung gestellt",
-        "type": "yesno"
+        "type": "yesno",
+        "tag": "die Ausstattung mit benötigten Ressourcen"
       }
     ]
   },
@@ -70,27 +84,33 @@
     "questions": [
       {
         "question": "Ich bekomme neue Herausforderungen",
-        "type": "yesno"
+        "type": "yesno",
+        "tag": "das Angebot neuer Herausforderungen"
       },
       {
         "question": "Mein Tätigkeitsbereich bietet Abwechslung",
-        "type": "yesno"
+        "type": "yesno",
+        "tag": "die Abwechslung im Tätigskeitsbereich"
       },
       {
         "question": "Ich kann mich weiterbilden",
-        "type": "yesno"
+        "type": "yesno",
+        "tag": "die Förderung von Schulungsmaßnahmen"
       },
       {
         "question": "Meine Entwicklungsmöglichkeiten werden thematisiert",
-        "type": "yesno"
+        "type": "yesno",
+        "tag" : "das Gespräch über die Weiterbildung"
       },
       {
         "question": "Ich sehe vielfältige Entwicklungsmöglichkeiten",
-        "type": "yesno"
+        "type": "yesno",
+        "tag" : "die Entwicklungsperspektive"
       },
       {
         "question": "Ich kann meine Ideen einbringen",
-        "type": "yesno"
+        "type": "yesno",
+        "tag" : "die Offenheit für Ideen"
       }
     ]
   },
@@ -99,27 +119,33 @@
     "questions": [
       {
         "question": "Meine Führungskraft behandelt alle Kollegen gleich",
-        "type": "yesno"
+        "type": "yesno",
+        "tag" : "die Gleichbehandlung der Kollegen"
       },
       {
         "question": "Meine Führungskraft lobt mich ausreichend",
-        "type": "yesno"
+        "type": "yesno",
+        "tag" : "das Lob"
       },
       {
         "question": "Meine Arbeit wird honoriert",
-        "type": "yesno"
+        "type": "yesno",
+        "tag" : "die fachliche Anerkennung"
       },
       {
         "question": "Ich nehme meinen Beitrag zum Unternehmenserfolg wahr",
-        "type": "yesno"
+        "type": "yesno",
+        "tag" : "die Hervorstellung des Beitrags zum Unternehmenserfolg"
       },
       {
         "question": "Meine Führungskraft unterstützt mich",
-        "type": "yesno"
+        "type": "yesno",
+        "tag" : "ihre generelle Unterstützung"
       },
       {
         "question": "Ich kann meiner Führungskraft vertrauen",
-        "type": "yesno"
+        "type": "yesno",
+        "tag" : "ihre vertrauensbildenden Maßnahmen"
       }
     ]
   },
@@ -128,27 +154,33 @@
     "questions": [
       {
         "question": "Der Gesprächston ist angemessen",
-        "type": "yesno"
+        "type": "yesno",
+        "tag" : "dem angemessenen Ton"
       },
       {
         "question": "Der Respekt ist im Gespräch gegeben",
-        "type": "yesno"
+        "type": "yesno",
+        "tag" : "dem respektvollen Umgang"
       },
       {
         "question": "Ich werde ausreichend informiert",
-        "type": "yesno"
+        "type": "yesno",
+        "tag" : "der Informationsverteilung"
       },
       {
         "question": "Ich habe das Gefühl, ich werde in Entscheidungen einbezogen",
-        "type": "yesno"
+        "type": "yesno",
+        "tag" : "der Entscheidungspartizipation"
       },
       {
         "question": "Die Atmosphäre in der Abteilung ist entspannt",
-        "type": "yesno"
+        "type": "yesno",
+        "tag" : "der angenehmen Arbeitsatmosphäre"
       },
       {
         "question": "Ich habe das Gefühl, Teil eines Teams zu sein",
-        "type": "yesno"
+        "type": "yesno",
+        "tag" : "dem Teamspirit"
       }
     ]
   }

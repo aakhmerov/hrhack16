@@ -48,6 +48,7 @@ define([
                 model.set('answer',answer);
                 model.set('question',questionId);
                 model.set('category',this.options.categoryId);
+                model.set('tag',this.collection.toJSON()[this.options.categoryId - 1].questions[questionId].tag);
                 if (this.categoryType == 1) {
                     model.set('text', this.$el.find('textarea[question="' + questionId + '"]').val());
                 }
@@ -101,7 +102,7 @@ define([
             this.$el.empty();
             var data = {
                 "categoryId" : this.options.categoryId,
-                "category" : this.collection.toJSON()[this.options.categoryId]
+                "category" : this.collection.toJSON()[this.options.categoryId - 1]
             };
             this.$el.append(this.template(data));
             Backbone.Syphon.deserialize(this, this.model.toJSON());

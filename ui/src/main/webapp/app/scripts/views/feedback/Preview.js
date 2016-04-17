@@ -24,7 +24,8 @@ define([
         initialize: function () {
 //            nothing to do here
             this.model = new FeedbackModel(JSON.parse(localStorage.getItem('feedback')));
-            _.bindAll(this, 'getAction', 'render', 'editFeedback', 'sendFeedbackmessage');
+            _.bindAll(this, 'getAction', 'render', 'editFeedback','getPositive','getNegative',
+                'sendFeedbackmessage','calculateState','composeRepresentation');
             this.collection = new CategoriesCollection();
             $.when(this.collection.fetch()).then(this.render);
         },
@@ -41,17 +42,52 @@ define([
 
         render: function () {
             //compile handlebars template
+            var data = this.composeRepresentation();
+            this.$el.html(this.template(data));
+            return this;
+        },
+
+        composeRepresentation : function () {
             var data = {
                 "title" : ""
             };
             if ( this.collection.toJSON().length > 0 && this.model.get('category')){
                 data = {
-                    "title" : this.collection.toJSON()[this.model.get('category')].name,
-                    "lead" : AuthenticationModel.get('user').lead
+                    "title" : this.collection.toJSON()[this.model.get('category') - 1].name,
+                    "lead" : AuthenticationModel.get('user').lead,
+                    "overallState" : this.calculateState(),
+                    "positive" : this.getPositive(),
+                    "negative" : this.getNegative()
                 };
             }
-            this.$el.html(this.template(data));
-            return this;
+            return data;
+        },
+
+        calculateState : function () {
+            var totalQuestions = this.collection.toJSON()[this.model.get('category') - 1].questions.length;
+            var yesAnswers = this.getPositive();
+            var noAnswers = this.getNegative();
+            var yesRatio = yesAnswers.length / totalQuestions;
+            var noRatio = noAnswers.length / totalQuestions;
+            if ( yesRatio > noRatio) {
+                return 'positive';
+            } else if (yesRatio == noRatio) {
+                return 'neutral';
+            } else {
+                return 'negative';
+            }
+        },
+
+        getPositive : function () {
+            return this.model.get('answers').filter(function(answer) {
+                return answer.answer == 'yes';
+            });
+        },
+
+        getNegative : function () {
+            return this.model.get('answers').filter(function(answer) {
+                return answer.answer == 'no';
+            });
         },
 
         editFeedback: function () {
@@ -60,6 +96,7 @@ define([
 
         sendFeedbackmessage: function () {
             this.model.set('confirmed',true);
+            this.model.set('email',this.template(this.composeRepresentation()));
             this.model.save();
         }
 

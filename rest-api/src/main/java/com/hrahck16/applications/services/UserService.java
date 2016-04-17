@@ -114,7 +114,13 @@ public class UserService {
         } else  if (auth != null && feedback.isConfirmed()) {
 //          this should update reference in both userFeedback and Division statistics
             this.userFeedback.get(auth.getToken()).setConfirmed(true);
+            this.userFeedback.get(auth.getToken()).setEmail(feedback.getEmail());
+            sendEmail();
         }
+    }
+
+    private void sendEmail() {
+        
     }
 
 

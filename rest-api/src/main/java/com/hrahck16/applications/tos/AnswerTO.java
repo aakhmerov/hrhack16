@@ -9,6 +9,15 @@ public class AnswerTO {
     private int question;
     private String answer;
     private String text;
+    private String tag;
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
 
     public int getCategory() {
         return category;
