@@ -11,6 +11,15 @@ public class FeedbackTO {
     private List<AnswerTO> answers;
     private User user;
     private boolean confirmed;
+    private int categoryType;
+
+    public int getCategoryType() {
+        return categoryType;
+    }
+
+    public void setCategoryType(int categoryType) {
+        this.categoryType = categoryType;
+    }
 
     public boolean isConfirmed() {
         return confirmed;

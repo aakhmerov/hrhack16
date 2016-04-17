@@ -9,11 +9,15 @@ require.config({
         },
         handlebars: {
             exports: 'Handlebars'
+        },
+        syphon : {
+            deps : ['backbone']
         }
     },
     paths: {
         jquery: '../bower_components/jquery/dist/jquery',
         backbone: '../bower_components/backbone/backbone',
+        syphon : '../bower_components/backbone.syphon/lib/backbone.syphon',
         underscore: '../bower_components/lodash/dist/lodash',
         handlebars : '../bower_components/handlebars/handlebars',
         text : '../bower_components/requirejs-text/text',
@@ -24,7 +28,8 @@ require.config({
 require([
     'backbone',
     'handlebars',
-    'router'
+    'router',
+    'syphon'
 ], function (Backbone,Handlebars, Router) {
     Router.initialize();
 

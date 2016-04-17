@@ -9,7 +9,8 @@ define([
 
     var AnswerModel = Backbone.Model.extend({
         defaults : {
-            "confirmed" : false
+            "confirmed" : false,
+            "categoryType" : "1"
         },
 
         url : 'api/answers',

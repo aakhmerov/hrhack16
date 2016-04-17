@@ -20,13 +20,16 @@ define([
         events : {
             'click .answerButton' : 'processQuestion',
             'click .preview' : 'processPreview',
-            'click input[type=radio]' : 'removeFeedbackTypeError',
+            'click input[type=radio]' : 'removeFeedbackTypeError'
         },
 
         initialize: function (options) {
 //            nothing to do here
             this.options = options;
             _.bindAll(this,'render','processQuestion','processPreview');
+            if (localStorage.getItem('feedback')) {
+                this.model = new FeedbackModel(JSON.parse(localStorage.getItem('feedback')));
+            }
             this.collection = new CategoriesCollection();
             this.answersCollection = new AnswersCollection();
             $.when(this.collection.fetch()).then(this.render);
@@ -95,6 +98,7 @@ define([
                 "category" : this.collection.toJSON()[this.options.categoryId]
             };
             this.$el.append(this.template(data));
+            Backbone.Syphon.deserialize(this, this.model.toJSON());
             return this;
         }
 
