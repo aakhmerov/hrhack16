@@ -56,8 +56,8 @@ define([
                     model.set('text', this.$el.find('textarea[question="' + questionId + '"]').val());
                 }
                 this.answersCollection.add(model);
-                var activeRow =  this.$el.find('div[row-id="' + questionId + '"]').hide();
-                activeRow.hide();
+                var activeRow =  this.$el.find('div[row-id="' + questionId + '"]');
+
 
                 var answerElement = '<div id="'+questionId+'" class="answers-question-block">' +
                                         '<label>Frage:'+questionNr+'</label>' +
@@ -67,6 +67,8 @@ define([
                                         '</div>'
                                     '</div>';
                 activeRow.after(answerElement);
+
+                activeRow.hide();
 
 
 
@@ -80,8 +82,8 @@ define([
 
         showHideQuestion:function(event) {
             event.preventDefault();
-            var rowId = $(event.currentTarget).parents('div.answers-question-block').attr('id')
-            this.$el.find('div[id="' + rowId + '"]').hide();
+            var rowId = $(event.currentTarget).parents('div.answers-question-block').attr('id');
+            this.$el.find('div[id="' + rowId + '"]').remove();
             this.$el.find('div[row-id="' + rowId + '"]').show();
         },
 

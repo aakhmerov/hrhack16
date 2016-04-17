@@ -51,7 +51,10 @@
 
     .answers-question-block {
         padding: 10px 15px;
+        height: 100%;
+        display: inline-block;
         background: lightgreen;
+        width: 100%;
     }
 
     .feedback-type {
