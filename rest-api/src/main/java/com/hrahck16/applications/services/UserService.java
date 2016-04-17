@@ -3,9 +3,15 @@ package com.hrahck16.applications.services;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hrahck16.applications.domain.User;
 import com.hrahck16.applications.tos.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.Cookie;
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,6 +32,8 @@ public class UserService {
     private HashMap <String, List<FeedbackTO>> devisionFeedbacks = new HashMap<String, List<FeedbackTO>>();
     private HashMap <String, List<AnswerTO>> answers = new HashMap<String, List<AnswerTO>>();
     private HashMap <String, FeedbackTO> userFeedback = new HashMap<String, FeedbackTO>();
+
+    private JavaMailSender javaMailSender = new JavaMailSenderImpl();
 
     @PostConstruct
     public void init() {
@@ -115,12 +123,24 @@ public class UserService {
 //          this should update reference in both userFeedback and Division statistics
             this.userFeedback.get(auth.getToken()).setConfirmed(true);
             this.userFeedback.get(auth.getToken()).setEmail(feedback.getEmail());
-            sendEmail();
+            sendEmail(this.userFeedback.get(auth.getToken()));
         }
     }
 
-    private void sendEmail() {
-        
+    private void sendEmail(FeedbackTO feedbackTO) {
+        MimeMessage mail = javaMailSender.createMimeMessage();
+        try {
+            MimeMessageHelper helper = new MimeMessageHelper(mail, true);
+            helper.setTo("jan.c.drescher@googlemail.com");
+            helper.setReplyTo("admin@voiceback.com");
+            helper.setFrom("admin@voiceback.com");
+            helper.setSubject("New Feedback");
+            helper.setText("<html><body>" + feedbackTO.getEmail() + "</body></html>",true);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        } finally {}
+        javaMailSender.send(mail);
+        //return helper;
     }
 
 

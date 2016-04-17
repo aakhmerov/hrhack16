@@ -6,16 +6,18 @@ define([
     'underscore',
     'backbone',
     'text!templates/feedback/preview.html',
+    'text!templates/feedback/preview_email.html',
     'models/answers/FeedbackModel',
     'models/security/AuthenticationModel',
     'collections/categories/CategoriesCollection',
     //dirty hack for handlebars loading wait
     'handlebars'
-], function ($, _, Backbone, feedback, FeedbackModel,AuthenticationModel,CategoriesCollection, Handlebars) {
+], function ($, _, Backbone, feedback,preview_email, FeedbackModel,AuthenticationModel,CategoriesCollection, Handlebars) {
 
     var Preview = Backbone.View.extend({
 
         template: Handlebars.compile(feedback),
+        preview_email: Handlebars.compile(preview_email),
 
         events: {
             'click .actionButton': 'getAction'
@@ -96,7 +98,7 @@ define([
 
         sendFeedbackmessage: function () {
             this.model.set('confirmed',true);
-            this.model.set('email',this.template(this.composeRepresentation()));
+            this.model.set('email',this.preview_email(this.composeRepresentation()));
             this.model.save();
         }
 
