@@ -84,6 +84,7 @@ define([
             this.showParams = {
                 el:'#page'
             };
+            localStorage.removeItem('feedback');
             require(['views/Login'], this.showPage);
         },
 

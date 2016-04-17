@@ -30,7 +30,7 @@ define([
         getCategories: function (event) {
             event.preventDefault();
             var categoryNumber = parseInt(event.target.value);
-            window.router.navigate("feedback/categories/"+categoryNumber, {trigger: true});
+            window.router.navigate("feedback/categories/" + categoryNumber, {trigger: true});
         },
 
 

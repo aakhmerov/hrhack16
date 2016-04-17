@@ -29,6 +29,8 @@ define([
             _.bindAll(this,'render','processQuestion','processPreview');
             if (localStorage.getItem('feedback')) {
                 this.model = new FeedbackModel(JSON.parse(localStorage.getItem('feedback')));
+            } else {
+                this.model = new FeedbackModel();
             }
             this.categoryType = this.model.get('categoryType');
             this.collection = new CategoriesCollection();
