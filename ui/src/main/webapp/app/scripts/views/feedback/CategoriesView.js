@@ -65,7 +65,7 @@ define([
             model.set('answers',this.answersCollection.toJSON());
             model.save();
             //persist information in local storage
-            localStorage.setItem('feedback', model.toJSON());
+            localStorage.setItem('feedback', JSON.stringify(model.toJSON()));
 
             window.router.navigate("feedback/preview", {trigger: true});
         },

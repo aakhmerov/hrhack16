@@ -21,15 +21,17 @@ define([
 
         initialize: function () {
 //            nothing to do here
-            this.model = new FeedbackModel(localStorage.getItem('feedback'));
+            this.model = new FeedbackModel(JSON.parse(localStorage.getItem('feedback')));
             _.bindAll(this, 'getAction', 'render', 'editFeedback', 'sendFeedbackmessage');
         },
 
         getAction: function (event) {
             event.preventDefault();
-            var action = this.$el.find('button[name=action]').val();
+            var action = $(event.currentTarget).val();
             if (action == 'send') {
                 return this.sendFeedbackmessage();
+            } if (action == "edit") {
+                this.editFeedback();
             }
         },
 
@@ -40,7 +42,7 @@ define([
         },
 
         editFeedback: function () {
-            console.log('editFeedback');
+            window.router.navigate("feedback/categories/"+this.model.get('answers')[0].category, {trigger: true});
         },
 
         sendFeedbackmessage: function () {
