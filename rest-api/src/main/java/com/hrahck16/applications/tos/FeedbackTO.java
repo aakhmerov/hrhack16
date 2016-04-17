@@ -10,6 +10,15 @@ import java.util.List;
 public class FeedbackTO {
     private List<AnswerTO> answers;
     private User user;
+    private boolean confirmed;
+
+    public boolean isConfirmed() {
+        return confirmed;
+    }
+
+    public void setConfirmed(boolean confirmed) {
+        this.confirmed = confirmed;
+    }
 
     public void setAnswers(List<AnswerTO> answers) {
         this.answers = answers;

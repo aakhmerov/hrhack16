@@ -2,6 +2,7 @@ package com.hrahck16.applications.controller;
 
 import com.hrahck16.applications.services.UserService;
 import com.hrahck16.applications.tos.AnswerTO;
+import com.hrahck16.applications.tos.FeedbackTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Component;
@@ -32,8 +33,8 @@ public class AnswersRestController {
     @Path("/")
     @Produces({ MediaType.APPLICATION_JSON })
     @Consumes({ MediaType.APPLICATION_JSON })
-    public Response processAnswers (@RequestBody List<AnswerTO> answers, @Context HttpServletRequest request) {
-        userService.processAnswers(answers,request.getCookies());
+    public Response processAnswers (@RequestBody FeedbackTO feedbackTO, @Context HttpServletRequest request) {
+        userService.processAnswers(feedbackTO,request.getCookies());
         return Response.ok("ok").build();
     }
 }

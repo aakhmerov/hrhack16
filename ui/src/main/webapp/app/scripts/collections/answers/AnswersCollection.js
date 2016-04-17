@@ -7,7 +7,6 @@ define([
 
     var AnswersCollection = Backbone.Collection.extend({
         model: AnswerModel,
-        url : 'api/answers',
 
         initialize: function(options) {
             _.bindAll(this, 'parse');

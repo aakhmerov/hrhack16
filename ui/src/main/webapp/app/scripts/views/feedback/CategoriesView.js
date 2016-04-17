@@ -9,9 +9,10 @@ define([
     'collections/categories/CategoriesCollection',
     'collections/answers/AnswersCollection',
     'models/answers/AnswerModel',
+    'models/answers/FeedbackModel',
     //dirty hack for handlebars loading wait
     'handlebars'
-], function ($, _, Backbone, categories,CategoriesCollection,AnswersCollection,AnswerModel, Handlebars) {
+], function ($, _, Backbone, categories,CategoriesCollection,AnswersCollection,AnswerModel,FeedbackModel, Handlebars) {
 
     var CategoriesView = Backbone.View.extend({
 
@@ -39,7 +40,7 @@ define([
                 var answer = $(event.currentTarget).attr('answer');
                 var questionId = $(event.currentTarget).attr('question');
                 model.set('answer',answer);
-                model.set('questionId',questionId);
+                model.set('question',questionId);
                 model.set('category',this.options.categoryId);
                 if (this.categoryType == 1) {
                     model.set('text', this.$el.find('textarea[question="' + questionId + '"]').val());
@@ -60,7 +61,11 @@ define([
                 alert('please choose question')
             }
             //save it before navigate to the preview view!!
-                window.router.navigate("feedback/preview", {trigger: true});
+            var model = new FeedbackModel ();
+            model.set('answers',this.answersCollection.toJSON());
+            model.save();
+
+            window.router.navigate("feedback/preview", {trigger: true});
         },
 
         removeFeedbackTypeError: function (event) {

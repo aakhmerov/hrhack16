@@ -25,6 +25,7 @@ public class UserService {
     private HashMap <String, FeelingTO> userFeelings = new HashMap<String, FeelingTO>();
     private HashMap <String, List<FeedbackTO>> devisionFeedbacks = new HashMap<String, List<FeedbackTO>>();
     private HashMap <String, List<AnswerTO>> answers = new HashMap<String, List<AnswerTO>>();
+    private HashMap <String, FeedbackTO> userFeedback = new HashMap<String, FeedbackTO>();
 
     @PostConstruct
     public void init() {
@@ -100,17 +101,22 @@ public class UserService {
         return result;
     }
 
-    public void processAnswers(List<AnswerTO> answers, Cookie[] cookies) {
+    public void processAnswers(FeedbackTO feedback, Cookie[] cookies) {
         AuthorizationTO auth = this.getAuthorization(cookies);
-        if (auth != null) {
-            this.answers.put(auth.getToken(),answers);
-            FeedbackTO newFeedback = new FeedbackTO();
-            newFeedback.setAnswers (answers);
-            newFeedback.setUser (auth.getUser());
+        if (auth != null && !feedback.isConfirmed()) {
+            feedback.setUser(auth.getUser());
+            userFeedback.put(auth.getToken(), feedback);
+            this.answers.put(auth.getToken(), feedback.getAnswers());
             if (this.devisionFeedbacks.get(auth.getUser().getDivision()) == null) {
                 this.devisionFeedbacks.put(auth.getUser().getDivision(), new ArrayList<FeedbackTO>());
             }
-            this.devisionFeedbacks.get(auth.getUser().getDivision()).add(newFeedback);
+            this.devisionFeedbacks.get(auth.getUser().getDivision()).add(feedback);
+        } else  if (auth != null && feedback.isConfirmed()) {
+//          this should update reference in both userFeedback and Division statistics
+            this.userFeedback.get(auth.getToken()).setConfirmed(true);
         }
+
     }
+
+
 }
