@@ -9,6 +9,7 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.Cookie;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class UserService {
     private HashMap <String, User> users = new HashMap<String, User>();
     private HashMap <String, FeelingTO> userFeelings = new HashMap<String, FeelingTO>();
     private HashMap <String, List<FeedbackTO>> devisionFeedbacks = new HashMap<String, List<FeedbackTO>>();
+    private HashMap <String, List<AnswerTO>> answers = new HashMap<String, List<AnswerTO>>();
 
     @PostConstruct
     public void init() {
@@ -43,12 +45,9 @@ public class UserService {
     }
 
     public void processFeeling(FeelingTO feelingTO, Cookie[] cookies) {
-        if (cookies != null) {
-            for (Cookie c : cookies) {
-                if (TOKEN.equals(c.getName())) {
-                    this.userFeelings.put(c.getName()+"=" + c.getValue(), feelingTO);
-                }
-            }
+        AuthorizationTO auth = this.getAuthorization(cookies);
+        if ( auth != null) {
+            this.userFeelings.put(auth.getToken(),feelingTO);
         }
     }
 
@@ -102,6 +101,16 @@ public class UserService {
     }
 
     public void processAnswers(List<AnswerTO> answers, Cookie[] cookies) {
-
+        AuthorizationTO auth = this.getAuthorization(cookies);
+        if (auth != null) {
+            this.answers.put(auth.getToken(),answers);
+            FeedbackTO newFeedback = new FeedbackTO();
+            newFeedback.setAnswers (answers);
+            newFeedback.setUser (auth.getUser());
+            if (this.devisionFeedbacks.get(auth.getUser().getDivision()) == null) {
+                this.devisionFeedbacks.put(auth.getUser().getDivision(), new ArrayList<FeedbackTO>());
+            }
+            this.devisionFeedbacks.get(auth.getUser().getDivision()).add(newFeedback);
+        }
     }
 }
