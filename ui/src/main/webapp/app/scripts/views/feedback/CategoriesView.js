@@ -30,6 +30,7 @@ define([
             if (localStorage.getItem('feedback')) {
                 this.model = new FeedbackModel(JSON.parse(localStorage.getItem('feedback')));
             }
+            this.categoryType = this.model.get('categoryType');
             this.collection = new CategoriesCollection();
             this.answersCollection = new AnswersCollection();
             $.when(this.collection.fetch()).then(this.render);
@@ -68,6 +69,7 @@ define([
             model.set('answers',this.answersCollection.toJSON());
             model.set('category',this.options.categoryId);
             model.save();
+            model.set('categoryType',this.categoryType);
             //persist information in local storage
             localStorage.setItem('feedback', JSON.stringify(model.toJSON()));
 
@@ -84,6 +86,7 @@ define([
             }
             var value = this.$el.find('input[type=radio]:checked').val();
             this.categoryType = value;
+            this.model.set('categoryType',value);
             if (value == 0) {
                 this.$el.find('textarea').hide();
             } else {
@@ -100,6 +103,7 @@ define([
             };
             this.$el.append(this.template(data));
             Backbone.Syphon.deserialize(this, this.model.toJSON());
+            this.removeFeedbackTypeError()
             return this;
         }
 
