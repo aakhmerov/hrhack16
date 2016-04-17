@@ -33,7 +33,7 @@ public class UserService {
     private HashMap <String, List<AnswerTO>> answers = new HashMap<String, List<AnswerTO>>();
     private HashMap <String, FeedbackTO> userFeedback = new HashMap<String, FeedbackTO>();
 
-    private JavaMailSender javaMailSender = new JavaMailSenderImpl();
+    private JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
 
     @PostConstruct
     public void init() {
@@ -128,6 +128,7 @@ public class UserService {
     }
 
     private void sendEmail(FeedbackTO feedbackTO) {
+        javaMailSender.setHost("voiceback.com");
         MimeMessage mail = javaMailSender.createMimeMessage();
         try {
             MimeMessageHelper helper = new MimeMessageHelper(mail, true);
