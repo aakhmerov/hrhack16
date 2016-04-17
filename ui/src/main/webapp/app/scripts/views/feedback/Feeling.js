@@ -6,8 +6,8 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'text!templates/feedback/feeling.html',
-    'models/feeling/FeelingModel',
+  'text!templates/feedback/feeling.html', 
+  'models/feeling/FeelingModel',
   //dirty hack for handlebars loading wait
   'handlebars'
 ], function($, _, Backbone, feeling,FeelingModel, Handlebars) {

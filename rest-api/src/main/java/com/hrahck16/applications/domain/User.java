@@ -10,6 +10,15 @@ public class User {
     private String lastName;
     private String division;
     private String role;
+    private String lead;
+
+    public String getLead() {
+        return lead;
+    }
+
+    public void setLead(String lead) {
+        this.lead = lead;
+    }
 
     public String getUsername() {
         return username;

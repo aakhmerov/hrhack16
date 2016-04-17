@@ -5,7 +5,8 @@
     "division" : "IT",
     "lastName" : "Mustermann",
     "name" : "Max",
-    "role" : "mitarbeiter"
+    "role" : "mitarbeiter",
+    "lead" : "Frau Müller"
   },
   {
     "username" : "Chris",
@@ -13,7 +14,8 @@
     "division" : "IT",
     "lastName" : "Great",
     "name" : "Christoph",
-    "role" : "mitarbeiter"
+    "role" : "mitarbeiter",
+    "lead" : "Frau Müller"
   },
   {
     "username" : "Tessa",
@@ -21,7 +23,8 @@
     "division" : "HR",
     "lastName" : "Hurray",
     "name" : "Theresa",
-    "role" : "mitarbeiter"
+    "role" : "mitarbeiter",
+    "lead" : "Frau Müller"
   },
   {
 
@@ -30,7 +33,8 @@
     "division" : "Sales",
     "lastName" : "Talk",
     "name" : "Robin",
-    "role" : "mitarbeiter"
+    "role" : "mitarbeiter",
+    "lead" : "Frau Müller"
   },
   {
 
@@ -39,7 +43,8 @@
     "division" : "IT",
     "lastName" : "Fantastic",
     "name" : "Michael",
-    "role" : "Teamlead"
+    "role" : "Teamlead",
+    "lead" : "Frau Müller"
   },
   {
 
@@ -48,6 +53,7 @@
     "division" : "Sales",
     "lastName" : "Müller",
     "name" : "Stephanie",
-    "role" : "mitarbeiter"
+    "role" : "mitarbeiter",
+    "lead" : "Frau Müller"
   }
 ]

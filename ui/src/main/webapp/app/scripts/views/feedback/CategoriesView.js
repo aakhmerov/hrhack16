@@ -66,6 +66,7 @@ define([
             //save it before navigate to the preview view!!
             var model = new FeedbackModel ();
             model.set('answers',this.answersCollection.toJSON());
+            model.set('category',this.options.categoryId);
             model.save();
             //persist information in local storage
             localStorage.setItem('feedback', JSON.stringify(model.toJSON()));
