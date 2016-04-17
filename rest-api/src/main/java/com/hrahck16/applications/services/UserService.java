@@ -132,7 +132,8 @@ public class UserService {
         MimeMessage mail = javaMailSender.createMimeMessage();
         try {
             MimeMessageHelper helper = new MimeMessageHelper(mail, true);
-            helper.setTo("aahm2002@gmail.com");
+//            helper.setTo("aahm2002@gmail.com");
+            helper.setTo("jan.c.drescher@googlemail.com");
             helper.setReplyTo("admin@voiceback.com");
             helper.setFrom("admin@voiceback.com");
             helper.setSubject("New Feedback");
