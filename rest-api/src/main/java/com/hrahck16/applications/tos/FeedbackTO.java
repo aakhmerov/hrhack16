@@ -12,6 +12,15 @@ public class FeedbackTO {
     private User user;
     private boolean confirmed;
     private int categoryType;
+    private int category;
+
+    public int getCategory() {
+        return category;
+    }
+
+    public void setCategory(int category) {
+        this.category = category;
+    }
 
     public int getCategoryType() {
         return categoryType;
