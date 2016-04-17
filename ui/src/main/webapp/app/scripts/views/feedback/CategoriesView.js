@@ -58,16 +58,13 @@ define([
                 var questionNr = parseInt(questionId) + 1;
                 var question = this.collection.toJSON()[this.options.categoryId - 1].questions[questionId];
                 var problemDescription = '';
-                var problemDescriptionHtlm = '';
+
                 model.set('answer',answer);
                 model.set('question',questionId);
                 model.set('category',this.options.categoryId);
                 model.set('tag',question.tag);
                 if (this.categoryType == 1) {
                     problemDescription = this.$el.find('textarea[question="' + questionId + '"]').val();
-                    if(problemDescription) {
-                        problemDescriptionHtlm = '<label>Ihre Problem Beschreibung: </label><div class="description">'+problemDescription+'</div>';
-                    }
                     model.set('text', problemDescription);
                 }
                 if (this.answeredQuestions.indexOf(questionId) < 0 ) {
@@ -81,7 +78,7 @@ define([
                 fm.save();
                 //persist information in local storage
                 localStorage.setItem('feedback', JSON.stringify(fm.toJSON()));
-                this.processActiveRow(questionId,question.question, problemDescriptionHtlm, answer);
+                this.processActiveRow(questionId,question.question, problemDescription, answer);
             } else {
                 $('div.error-box').css('display','block');
                 $('div.feedback-type').css('border','1px solid red');
@@ -90,12 +87,17 @@ define([
 
         },
 
-        processActiveRow : function (questionId,questionText, problemDescriptionHtlm, answer) {
+        processActiveRow : function (questionId,questionText, problemDescription, answer) {
             var answerMaaping = {
               'yes': 'zu gestimmt',
               'skip': 'nicht relevant',
               'no': 'nicht zu gestimmt',
             };
+            var problemDescriptionHtlm = '';
+            if(problemDescription) {
+                problemDescriptionHtlm = '<label>Ihre Problem Beschreibung: </label><div class="description">'+problemDescription+'</div>';
+            }
+
             var questionNr = parseInt(questionId) + 1;
             var activeRow =  this.$el.find('div[row-id="' + questionId + '"]');
             var answerElement = '' +
@@ -164,7 +166,9 @@ define([
             if (this.model.get('answers') && this.collection.toJSON()[this.options.categoryId - 1]) {
                 for (var i = 0; i < this.model.get('answers').length; i++) {
                     var answer = this.model.get('answers')[i];
-                    this.processActiveRow(answer.question,this.collection.toJSON()[this.options.categoryId - 1].questions[answer.question].question);
+                    var questionsText = this.collection.toJSON()[this.options.categoryId - 1].questions[answer.question].question;
+                    var pbDescription =  answer.text;
+                    this.processActiveRow(answer.question,questionsText, pbDescription, answer.answer );
                 }
             }
             Backbone.Syphon.deserialize(this, this.model.toJSON());
