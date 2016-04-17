@@ -4,9 +4,9 @@
   <div class="row">
 
 
-    <div class="row text-center bottom">
+    <div class="text-center bottom col-xs-4 col-xs-offset-4">
       {{#each categories}}
-      <div class="row middle box-1"><button class="category col-xs-4 col-xs-offset-4 btn" value="{{inc @index}}">{{name}}</button></div>
+      <div class="row middle box-1"><button class="category btn-block btn btn-default" value="{{inc @index}}">{{name}}</button></div>
       {{/each}}
     </div>
   </div>

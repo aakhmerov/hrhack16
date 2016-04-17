@@ -100,13 +100,19 @@ define([
 
         render: function () {
             this.$el.empty();
-            var data = {
-                "categoryId" : this.options.categoryId,
-                "category" : this.collection.toJSON()[this.options.categoryId - 1]
-            };
+            var data = {};
+            if (this.collection.toJSON()[this.options.categoryId - 1]) {
+                data = {
+                    "categoryId" : this.collection.toJSON()[this.options.categoryId - 1].name,
+                    "category" : this.collection.toJSON()[this.options.categoryId - 1]
+                };
+            }
+
             this.$el.append(this.template(data));
-            for (i = 0; i < this.model.get('answers').length; i++) {
-                this.$el.find('div[row-id="' + this.model.get('answers')[i].question + '"]').hide();
+            if (this.model.get('answers')) {
+                for (var i = 0; i < this.model.get('answers').length; i++) {
+                    this.$el.find('div[row-id="' + this.model.get('answers')[i].question + '"]').hide();
+                }
             }
             Backbone.Syphon.deserialize(this, this.model.toJSON());
             this.removeFeedbackTypeError();

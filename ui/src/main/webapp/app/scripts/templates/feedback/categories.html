@@ -1,4 +1,4 @@
-<div class="container feedback-page">
+<div class="container feedback-page form-horizontal">
     <h3 class="text-center row">Kategorie {{categoryId}}</h3>
 
     <form class="answers-display">
@@ -24,13 +24,13 @@
                 <textarea cols="50" rows="5" placeholder="Beschreiben Sie Ihr Problem" question="{{@index}}"></textarea>
             </div>
             <div class="text-center bottom col-xs-12">
-                <button class="col-xs-3 col-xs-offset-0 btn answerButton" answer="yes" question="{{@index}}">ich stimme
+                <button class="col-xs-3 col-xs-offset-0 btn  btn-default answerButton" answer="yes" question="{{@index}}">ich stimme
                     zu
                 </button>
-                <button class="col-xs-2 col-xs-offset-2 btn answerButton" answer="skip" question="{{@index}}">Nicht
+                <button class="col-xs-2 col-xs-offset-2 btn btn-default answerButton" answer="skip" question="{{@index}}">Nicht
                     relevant
                 </button>
-                <button class="col-xs-3 pull-right btn answerButton" answer="no" question="{{@index}}">Ich stimme nicht
+                <button class="col-xs-3 pull-right btn btn-default answerButton" answer="no" question="{{@index}}">Ich stimme nicht
                     zu
                 </button>
             </div>
@@ -39,6 +39,6 @@
     </div>
 
     <div class="row text-center">
-        <button class="btn btn-big preview">Vorschau</button>
+        <button class="btn btn-default btn-lg preview">Vorschau</button>
     </div>
 </div>
