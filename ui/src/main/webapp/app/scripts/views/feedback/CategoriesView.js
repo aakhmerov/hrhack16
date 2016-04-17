@@ -20,13 +20,14 @@ define([
         events : {
             'click .answerButton' : 'processQuestion',
             'click .preview' : 'processPreview',
-            'click input[type=radio]' : 'removeFeedbackTypeError'
+            'click input[type=radio]' : 'removeFeedbackTypeError',
+            'click .editButton' : 'showHideQuestion'
         },
 
         initialize: function (options) {
 //            nothing to do here
             this.options = options;
-            _.bindAll(this,'render','processQuestion','processPreview');
+            _.bindAll(this,'render','processQuestion','processPreview','showHideQuestion');
             if (localStorage.getItem('feedback')) {
                 this.model = new FeedbackModel(JSON.parse(localStorage.getItem('feedback')));
             } else {
@@ -45,15 +46,30 @@ define([
                 var model = new AnswerModel();
                 var answer = $(event.currentTarget).attr('answer');
                 var questionId = $(event.currentTarget).attr('question');
+                var questionNr = parseInt(questionId) + 1;
+                var question = this.collection.toJSON()[this.options.categoryId - 1].questions[questionId];
                 model.set('answer',answer);
                 model.set('question',questionId);
                 model.set('category',this.options.categoryId);
-                model.set('tag',this.collection.toJSON()[this.options.categoryId - 1].questions[questionId].tag);
+                model.set('tag',question.tag);
                 if (this.categoryType == 1) {
                     model.set('text', this.$el.find('textarea[question="' + questionId + '"]').val());
                 }
                 this.answersCollection.add(model);
-                this.$el.find('div[row-id="' + questionId + '"]').hide();
+                var activeRow =  this.$el.find('div[row-id="' + questionId + '"]').hide();
+                activeRow.hide();
+
+                var answerElement = '<div id="'+questionId+'" class="answers-question-block">' +
+                                        '<label>Frage:'+questionNr+'</label>' +
+                                        '<div>'+ question.question+'</div>' +
+                                        '<div class="text-center bottom col-xs-12">' +
+                                            '<button class="col-xs-3 col-xs-offset-0 btn pull-right editButton">Bearbeiten</button>'+
+                                        '</div>'
+                                    '</div>';
+                activeRow.after(answerElement);
+
+
+
             } else {
                 $('div.error-box').css('display','block');
                 $('div.feedback-type').css('border','1px solid red');
@@ -62,10 +78,17 @@ define([
 
         },
 
+        showHideQuestion:function(event) {
+            event.preventDefault();
+            var rowId = $(event.currentTarget).parents('div.answers-question-block').attr('id')
+            this.$el.find('div[id="' + rowId + '"]').hide();
+            this.$el.find('div[row-id="' + rowId + '"]').show();
+        },
+
         processPreview : function (event) {
             event.preventDefault();
             if(!this.answersCollection.length) {
-                alert('please choose question')
+                return alert('please choose question')
             }
             //save it before navigate to the preview view!!
             var model = new FeedbackModel ();
