@@ -1,21 +1,30 @@
-<div class="container feedback-page" style="text-align : center;">
-    <h3>Dies wird Ihre Führungskraft sehen:</h3>
-    <p class="text-left row" style="text-align : left;">
+<div class="text-left feedback-text row" style="text-align : left;">
+    <p class="text-left">
         Sehr geehrte {{lead}},<br>
         <br>
         eines Ihrer Teammitglieder hat ein Feedback eingreicht.<br>
+    </p>
+    <p class="text-left">
         Ihr Teammitglied möchte sich zu dem Bereich {{title}} äußern. Insgesamt betrachtet das Teammitglied die {{title}} {{overallState}}.<br>
+    </p>
+    <p class="text-left">
         An Ihrer Führung empfindet das Teammitglied die:
         {{#each positive}}
         {{tag}},
         {{/each}}
         als positiv. Bitte behalten Sie diese Elemente in der Führung bei.<br>
+    </p>
+
+    <p class="text-left">
         Um eine Verbesserung für das Teammitglied zu erreichen, bitten wir Sie jedoch folgende Punkte zu überdenken: <br>
         {{#each negative}}
         {{tag}} <br>
         {{/each}}
-        <br>
-        Um in diesen Bereichen Fortschritte zu erzielen, können Sie aus unserem Maßnahmenkatalog Beispiele entnehmen.<br>
-        Alternativ können Sie unter den Schaltflächen den Kontakt zur Personalabteilung herstellen oder ein Klärungsgespräch vorschlagen<br>
     </p>
+
+    <p class="text-left">
+        Um in diesen Bereichen Fortschritte zu erzielen, können Sie aus unserem Maßnahmenkatalog Beispiele entnehmen.
+        Alternativ können Sie unter den Schaltflächen den Kontakt zur Personalabteilung herstellen oder ein Klärungsgespräch vorschlagen<br>
+    </p>
+
 </div>
